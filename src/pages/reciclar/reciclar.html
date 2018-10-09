@@ -1,0 +1,181 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      Centros de acopio
+    </ion-title>
+  </ion-navbar>
+    <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="center">
+      <ion-segment-button value="one">
+        Centro 1
+      </ion-segment-button>
+      <ion-segment-button value="kittens">
+        Centro 2
+      </ion-segment-button>
+      <ion-segment-button value="ducklings">
+        Centro 3
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding id="page4">
+<!-- Inicio Primer bloque ok -->
+ 
+<!-- Fin Primer bloque ok -->  
+
+  <div [ngSwitch]="center">
+    <ion-list *ngSwitchCase="'one'">
+     
+      <ion-item on-click="goToVidrio()">
+        <ion-thumbnail item-start>
+          <img src="assets/img/nbEDfzP5SBScE5C59KVg_vidrio.jpg">
+        </ion-thumbnail>
+        <h2>Vidrio</h2>
+      </ion-item>
+  <!-- Vidrio ok, sigueinte nivel -->  
+      <ion-item on-click="goToVidrio()">
+        <ion-thumbnail item-start>
+          <img src="assets/img/0Q4avQw2S5KrI8sxoBkT_plastico.jpg">
+        </ion-thumbnail>
+        <h2>Plástico</h2>
+      </ion-item>
+  <!-- Plástico ok, sigueinte nivel -->    
+      <ion-item on-click="goToPlastico()">
+        <ion-thumbnail item-start>
+          <img src="assets/img/Z7ve6DnSZyoo2hiZQr58_papel.jpg">
+        </ion-thumbnail>
+        <h2>Papel</h2>
+      </ion-item>
+     
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/Z7ve6DnSZyoo2hiZQr58_papel.jpg">
+        </ion-thumbnail>
+        <h2>Papel</h2>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'kittens'">
+     
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/nbEDfzP5SBScE5C59KVg_vidrio.jpg">
+        </ion-thumbnail>
+        <h2>Vidrio</h2>
+      </ion-item>
+      
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/0Q4avQw2S5KrI8sxoBkT_plastico.jpg">
+        </ion-thumbnail>
+        <h2>Plástico</h2>
+      </ion-item>
+     
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/0Q4avQw2S5KrI8sxoBkT_plastico.jpg">
+        </ion-thumbnail>
+        <h2>Papel</h2>
+      </ion-item>
+     
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/Z7ve6DnSZyoo2hiZQr58_papel.jpg">
+        </ion-thumbnail>
+        <h2>Cartón</h2>
+      </ion-item>
+     
+      <ion-item>
+          <ion-thumbnail item-start>
+            <img src="assets/img/nbEDfzP5SBScE5C59KVg_vidrio.jpg">
+          </ion-thumbnail>
+          <h2>Vidrio</h2>
+        </ion-item>
+    </ion-list>
+
+
+
+
+    <ion-list *ngSwitchCase="'ducklings'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/nbEDfzP5SBScE5C59KVg_vidrio.jpg">
+        </ion-thumbnail>
+        <h2>Vidrio</h2>
+      </ion-item>
+      
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/Z7ve6DnSZyoo2hiZQr58_papel.jpg">
+        </ion-thumbnail>
+        <h2>Papel</h2>
+      </ion-item>
+      
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-3.jpg">
+        </ion-thumbnail>
+        <h2>Madera</h2>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="assets/img/thumbnail-duckling-4.jpg">
+        </ion-thumbnail>
+        <h2>Plástico</h2>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+<!--  <ion-list id="reciclar-list3">
+    <ion-item color="dark" on-click="goToVidrio()" id="reciclar-list-item9">
+      <ion-thumbnail item-left>
+        <img src="assets/img/nbEDfzP5SBScE5C59KVg_vidrio.jpg" />
+      </ion-thumbnail>
+      <h2>
+        VIDRIO/BOTELLA
+      </h2>
+    </ion-item>
+  </ion-list>
+  <ion-list id="reciclar-list4">
+    <ion-item color="positive" on-click="goToPlastico()" id="reciclar-list-item10">
+      <ion-thumbnail item-left>
+        <img src="assets/img/0Q4avQw2S5KrI8sxoBkT_plastico.jpg" />
+      </ion-thumbnail>
+      <h2>
+        PLASTICO
+      </h2>
+    </ion-item>
+  </ion-list>
+  <ion-list id="reciclar-list5">
+    <ion-item color="dark" on-click="goToPapelYCarton()" id="reciclar-list-item11">
+      <ion-thumbnail item-left>
+        <img src="assets/img/Z7ve6DnSZyoo2hiZQr58_papel.jpg" />
+      </ion-thumbnail>
+      <h2>
+        PAPEL Y CARTON
+      </h2>
+    </ion-item>
+  </ion-list>
+  <ion-list id="reciclar-list6">
+    <ion-item color="dark" on-click="goToMetal()" id="reciclar-list-item12">
+      <ion-thumbnail item-left>
+        <img src="assets/img/r3JyNbPsRlucbO6Bs5Cw_metal.jpg" />
+      </ion-thumbnail>
+      <h2>
+        METAL
+      </h2>
+    </ion-item>
+    <ion-item color="dark" on-click="goToOtros()" id="reciclar-list-item13">
+      <ion-thumbnail item-left>
+        <img src="assets/img/r3JyNbPsRlucbO6Bs5Cw_metal.jpg" />
+      </ion-thumbnail>
+      <h2>
+        OTROS
+      </h2>
+    </ion-item>
+  </ion-list>
+  <button id="reciclar-button68" ion-button color="positive" block on-click="goToRECYCLEAN()">
+    REGRESAR
+  </button>  --> 
+</ion-content>  
