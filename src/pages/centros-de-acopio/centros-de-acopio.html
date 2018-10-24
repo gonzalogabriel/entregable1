@@ -9,13 +9,26 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page24">
+
   <ion-list id="centrosDeAcopio-list16">
-    <ion-item color="balanced" on-click="goToMAPACENTROACOPIOLUISCARLOSGALAN()" id="centrosDeAcopio-list-item39">
+    <ion-item *ngFor="let center of centers">
+        <ion-avatar item-left>
+            <!-- <img [src]="user.picture.medium"> -->
+         <img src="assets/img/UUV1Tz8RE2I3flj0xlQw_pegatinas-reciclaje-vidrio-12366.jpg" />
+        </ion-avatar>
+        <h2>{{ center.name_center | uppercase }}</h2>
+        <p>{{ center.address_center}}</p>
+        <p>{{ center.phone_center }}</p>
+    </ion-item>
+  </ion-list>
+
+
+  <!--   <ion-item color="balanced" on-click="goToMAPACENTROACOPIOLUISCARLOSGALAN()" id="centrosDeAcopio-list-item39">
       <ion-avatar item-left>
         <img src="assets/img/UUV1Tz8RE2I3flj0xlQw_pegatinas-reciclaje-vidrio-12366.jpg" />
       </ion-avatar>
       <h2>
-        Luis Carlos Galan
+        Luis Carlos Galan Sarmiento
       </h2>
     </ion-item>
     <ion-item color="balanced" on-click="goToMAPACENTROACOPI0QUIRIGUA()" id="centrosDeAcopio-list-item40">
@@ -35,7 +48,11 @@
       </h2>
     </ion-item>
   </ion-list>
+ -->
+
+  
   <button id="centrosDeAcopio-button55" ion-button color="positive" block on-click="goToRECYCLEAN()">
     Regresar
   </button>
+
 </ion-content>

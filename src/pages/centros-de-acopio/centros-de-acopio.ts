@@ -16,14 +16,44 @@ import { ProgresoPage } from '../progreso/progreso';
 import { MAPACENTROACOPIOLUISCARLOSGALANPage } from '../m-apacentroacopioluiscarlosgalan/m-apacentroacopioluiscarlosgalan';
 import { MAPACENTROACOPI0QUIRIGUAPage } from '../m-apacentroacopi0quirigua/m-apacentroacopi0quirigua';
 
+// Importar servicio api
+import { ApiserviceProvider } from '../../providers/apiservice/apiservice';
+
+
 @Component({
   selector: 'page-centros-de-acopio',
   templateUrl: 'centros-de-acopio.html'
 })
 export class CentrosDeAcopioPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+    public apiservice: ApiserviceProvider) {
+    
   }
+
+  centers: any[] = [];
+
+  // Obtener Centros de Acopio
+  ionViewDidLoad(){
+    this.apiservice.getCenters().subscribe(
+      data => {
+        this.centers = data.reverse();
+        console.log( 'API Respuesta: ' + this.centers.length + ' items.' );
+        console.log(  this.centers);
+      },
+      error => {
+        this.centers = [ { 'usuario': 'Admin', 'Error': error['message'] } ]
+        console.log(error.message);
+      }
+    )
+  }
+
+/*   goToVerCentro(params){
+    if (!params) params = {};
+    this.navCtrl.push(VerCentroPage);
+  }
+ */
+
   goToMAPACENTROACOPIORINCON(params){
     if (!params) params = {};
     this.navCtrl.push(MAPACENTROACOPIORINCONPage);
@@ -73,4 +103,6 @@ export class CentrosDeAcopioPage {
     if (!params) params = {};
     this.navCtrl.push(MAPACENTROACOPI0QUIRIGUAPage);
   }
+
+
 }
