@@ -15,10 +15,11 @@ import { CMoReciclarPage } from '../c-mo-reciclar/c-mo-reciclar';
 import { ProgresoPage } from '../progreso/progreso';
 import { MAPACENTROACOPIOLUISCARLOSGALANPage } from '../m-apacentroacopioluiscarlosgalan/m-apacentroacopioluiscarlosgalan';
 import { MAPACENTROACOPI0QUIRIGUAPage } from '../m-apacentroacopi0quirigua/m-apacentroacopi0quirigua';
+import { CentroDetallePage } from '../centro-detalle/centro-detalle';
 
 // Importar servicio api
 import { ApiserviceProvider } from '../../providers/apiservice/apiservice';
-import { normalizeLinks } from 'ionic-angular/umd/navigation/url-serializer';
+//import { normalizeLinks } from 'ionic-angular/umd/navigation/url-serializer';
 
 
 @Component({
@@ -56,17 +57,23 @@ export class CentrosDeAcopioPage {
     this.navCtrl.push(VerCentroPage);
   }
  */
-
+goToCentroDetalle(params){
+    if (!params) params = {};
+    this.navCtrl.push(CentroDetallePage);
+  }
   goToMAPACENTROACOPIORINCON(params){
     if (!params) params = {};
     this.navCtrl.push(MAPACENTROACOPIORINCONPage);
-  }goToRECYCLEAN(params){
+  }
+  goToRECYCLEAN(params){
     if (!params) params = {};
     this.navCtrl.push(RECYCLEANPage);
-  }goToReciclar(params){
+  }
+  goToReciclar(params){
     if (!params) params = {};
     this.navCtrl.push(ReciclarPage);
-  }goToVidrio(params){
+  }
+  goToVidrio(params){
     if (!params) params = {};
     this.navCtrl.push(VidrioPage);
   }goToCENTROACOPIOLUISCARLOSGALAN(params){

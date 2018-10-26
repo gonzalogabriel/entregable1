@@ -11,7 +11,8 @@
 <ion-content padding id="page24">
 
   <ion-list id="centrosDeAcopio-list16">
-    <ion-item *ngFor="let center of centers" on-click="goToMAPACENTROACOPIORINCON()">
+    <!-- <ion-item *ngFor="let center of centers" on-click="goToMAPACENTROACOPIORINCON()" id="centrodetalle-list-1"> -->
+    <ion-item *ngFor="let center of centers" on-click="goToCentroDetalle()" id="centrodetalle-list-1">
         <ion-avatar item-left>
             <img [src]="center.picture">
          <!-- <img src="assets/img/UUV1Tz8RE2I3flj0xlQw_pegatinas-reciclaje-vidrio-12366.jpg" /> -->
