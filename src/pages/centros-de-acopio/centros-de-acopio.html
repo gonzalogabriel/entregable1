@@ -11,10 +11,11 @@
 <ion-content padding id="page24">
 
   <ion-list id="centrosDeAcopio-list16">
-    <ion-item *ngFor="let center of centers">
+    <ion-item *ngFor="let center of centers" on-click="goToMAPACENTROACOPIORINCON()">
         <ion-avatar item-left>
-            <!-- <img [src]="user.picture.medium"> -->
-         <img src="assets/img/UUV1Tz8RE2I3flj0xlQw_pegatinas-reciclaje-vidrio-12366.jpg" />
+            <img [src]="center.picture">
+         <!-- <img src="assets/img/UUV1Tz8RE2I3flj0xlQw_pegatinas-reciclaje-vidrio-12366.jpg" /> -->
+
         </ion-avatar>
         <h2>{{ center.name_center | uppercase }}</h2>
         <p>{{ center.address_center}}</p>

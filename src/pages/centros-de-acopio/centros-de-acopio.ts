@@ -18,6 +18,7 @@ import { MAPACENTROACOPI0QUIRIGUAPage } from '../m-apacentroacopi0quirigua/m-apa
 
 // Importar servicio api
 import { ApiserviceProvider } from '../../providers/apiservice/apiservice';
+import { normalizeLinks } from 'ionic-angular/umd/navigation/url-serializer';
 
 
 @Component({
@@ -25,21 +26,23 @@ import { ApiserviceProvider } from '../../providers/apiservice/apiservice';
   templateUrl: 'centros-de-acopio.html'
 })
 export class CentrosDeAcopioPage {
-
   constructor(public navCtrl: NavController,
     public apiservice: ApiserviceProvider) {
     
   }
 
-  centers: any[] = [];
+  centers: any[]=[];
+ 
 
   // Obtener Centros de Acopio
   ionViewDidLoad(){
     this.apiservice.getCenters().subscribe(
       data => {
-        this.centers = data.reverse();
-        console.log( 'API Respuesta: ' + this.centers.length + ' items.' );
+        this.centers = data as any;
+          console.log( 'API Respuesta: ' + this.centers.length + ' items.' );
         console.log(  this.centers);
+        console.log( 'Esta es la variable data:');
+        console.log( data);
       },
       error => {
         this.centers = [ { 'usuario': 'Admin', 'Error': error['message'] } ]
