@@ -4,7 +4,7 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>
-        MAPA CENTRO ACOPIO api..
+        {{ centro.name_center | uppercase }}
       </ion-title>
     </ion-navbar>
   </ion-header>
@@ -22,13 +22,13 @@
       </div>
       <ion-item>
         <ion-icon color="secondary" large item-start name='information-circle'></ion-icon>
-        <h2>Museum of Information</h2>
-        <p>44 Rue de Info, 75010 Paris, France</p>
+        <h2>{{ centro.address_center}}</h2>
+        <p>{{ centro.phone_center}}</p>
       </ion-item>
       <ion-item>
         <ion-icon color="primary" large item-start name='phone-portrait'></ion-icon>
-        <h2>General Pharmacy</h2>
-        <p>1 Avenue Faux, 75010 Paris, France</p>
+        <h2>Plástico, Metal, Papel</h2>
+        <p>{{ centro.schedule}}</p>
       </ion-item>
       <ion-item actions>
         <span ion-text item-start color="secondary" class="item-bold">26 min</span>

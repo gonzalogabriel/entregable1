@@ -59,7 +59,8 @@ export class CentrosDeAcopioPage {
  */
 goToCentroDetalle(params){
     if (!params) params = {};
-    this.navCtrl.push(CentroDetallePage);
+    console.log("parametros:" + params);
+    this.navCtrl.push(CentroDetallePage,{centro:params});
   }
   goToMAPACENTROACOPIORINCON(params){
     if (!params) params = {};

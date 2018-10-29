@@ -16,6 +16,11 @@ export class ApiserviceProvider {
     return this.http.get( this.apiUrl + 'centers' );
   }
 
+  getTypes(centroID){
+    console.log('GET: ' + this.apiUrl + 'centers/' + centroID + '/allTypes' );
+    return this.http.get( this.apiUrl + 'centers/' + centroID + '/allTypes' );
+  }
+
   addCenters(params) {
     let p = new HttpParams()
         .set('name_center',   params.name_center)

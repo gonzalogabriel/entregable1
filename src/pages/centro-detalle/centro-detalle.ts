@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {  NavController } from 'ionic-angular';
-//import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
+  //IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
 import { RECYCLEANPage } from '../r-ecyclean/r-ecyclean';
@@ -11,6 +12,7 @@ import { PapelYCartonPage } from '../papel-ycarton/papel-ycarton';
 import { MetalPage } from '../metal/metal';
 import { OtrosPage } from '../otros/otros';
 import { CentrosDeAcopioPage } from '../centros-de-acopio/centros-de-acopio';
+import { ApiserviceProvider } from '../../providers/apiservice/apiservice';
 
 
 //@IonicPage()
@@ -22,17 +24,50 @@ import { CentrosDeAcopioPage } from '../centros-de-acopio/centros-de-acopio';
 
 export class CentroDetallePage {
 
-  constructor(public navCtrl: NavController){
-    //, public navParams: NavParams) {
+  centro: any[]=[];
+  tipos: any[]=[];
+  todoslostipos: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public apiservice: ApiserviceProvider) {
+    //console.log(NavParams)
+    this.centro=navParams.get('centro');
+    console.log(this.centro);
   }
 
 
    ionViewDidLoad() {
      console.log('ionViewDidLoad CentroDetallePage');
+     console.log('ID del centro: '+ this.centro.id)
+     this.apiservice.getTypes(this.centro.id).subscribe(
+      data => {
+        this.tipos = data as any;
+        console.log( 'API Respuesta: ' + this.tipos.length + ' items.' );
+        console.log(  this.tipos);
+        console.log( 'Esta es la variable data:');
+        console.log( data);
+
+        // for (let tipo in this.tipos) {
+        //   console.log(tipo.material);
+        // }
+
+        this.tipos.forEach(function (tipo){
+          console.log(tipo.material);
+          this.todoslostipos=this.todoslostipos+tipo.material+', ';
+        });
+        console.log('Estos son todos los tipos');
+        console.log(this.todoslostipos);
+      },
+      error => {
+        this.tipos = [ { 'usuario': 'Admin', 'Error': error['message'] } ]
+        console.log(error.message);
+      }
+    )
+
    }
 
   goToCentroDetalle(params){
     if (!params) params = {};
+    console.log("parametros:" + params);
     this.navCtrl.push(CentroDetallePage);
   }
 
