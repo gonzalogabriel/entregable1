@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {  NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
   //IonicPage, NavController, NavParams } from 'ionic-angular';
+  //Prueba de comentario, gonzalo gonzalez;
 
 
 import { RECYCLEANPage } from '../r-ecyclean/r-ecyclean';
