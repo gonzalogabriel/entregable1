@@ -41,7 +41,7 @@ export class CentroDetallePage {
      this.apiservice.getTypes(this.centro.id).subscribe(
       data => {
         this.tipos = data as any;
-        console.log( 'API Respuesta: ' + this.tipos.length + ' items.' );
+        console.log( 'API Respuesta:  ' + this.tipos.length + ' items.' );
         console.log(  this.tipos);
         console.log( 'Esta es la variable data:');
         console.log( data);
