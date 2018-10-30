@@ -3,8 +3,8 @@
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>
-        {{ centro.name_center | uppercase }}
+      <ion-title text-capitalize>
+        {{ centro.name_center }}
       </ion-title>
     </ion-navbar>
   </ion-header>
@@ -21,15 +21,28 @@
         </ion-fab>
       </div>
       <ion-item>
-        <ion-icon color="secondary" large item-start name='information-circle'></ion-icon>
-        <h2>{{ centro.address_center}}</h2>
+        <ion-icon color="primary" item-start name='phone-portrait'></ion-icon>  
+        <h2 text-capitalize>{{ centro.address_center}}</h2>
         <p>{{ centro.phone_center}}</p>
-      </ion-item>
-      <ion-item>
-        <ion-icon color="primary" large item-start name='phone-portrait'></ion-icon>
-        <h2>Plástico, Metal, Papel</h2>
         <p>{{ centro.schedule}}</p>
       </ion-item>
+
+      <ion-list id="centro-detalle-material">
+        <!-- <ion-item *ngFor="let center of centers" on-click="goToMAPACENTROACOPIORINCON()" id="centrodetalle-list-1"> -->
+        <ion-item *ngFor="let tipo of tipos" id="centrodetalle-tipos">
+            <ion-icon color="secondary" small item-start name='information-circle'></ion-icon>
+
+            <h3 text-capitalize>{{ tipo.material}}</h3>
+        </ion-item>
+      </ion-list>
+    
+
+
+      <!-- <ion-item>
+        <ion-icon color="primary" large item-start name='phone-portrait'></ion-icon>
+        <h2>Plástico, Metal, Papel</h2>
+      </ion-item> -->
+   
       <ion-item actions>
         <span ion-text item-start color="secondary" class="item-bold">26 min</span>
         <span ion-text item-start color="subtle">(8.1 mi)</span>

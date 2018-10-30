@@ -14,6 +14,7 @@ import { MetalPage } from '../metal/metal';
 import { OtrosPage } from '../otros/otros';
 import { CentrosDeAcopioPage } from '../centros-de-acopio/centros-de-acopio';
 import { ApiserviceProvider } from '../../providers/apiservice/apiservice';
+import { identifierModuleUrl } from '@angular/compiler';
 
 
 //@IonicPage()
@@ -25,21 +26,28 @@ import { ApiserviceProvider } from '../../providers/apiservice/apiservice';
 
 export class CentroDetallePage {
 
-  centro: any[]=[];
+  centro: any;
+  centroid: number;
   tipos: any[]=[];
   todoslostipos: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public apiservice: ApiserviceProvider) {
     //console.log(NavParams)
     this.centro=navParams.get('centro');
+    console.log('variable centro: ');
     console.log(this.centro);
+    console.log('El tipo de variable es:');
+    console.log(typeof this.centro);
+    this.centroid=this.centro.id;
+    
   }
 
 
    ionViewDidLoad() {
      console.log('ionViewDidLoad CentroDetallePage');
-     console.log('ID del centro: '+ this.centro.id)
-     this.apiservice.getTypes(this.centro.id).subscribe(
+     console.log('ID del centro: '+ this.centroid);
+     //console.log('Tipo de var centro' + typeof this.centro);
+     this.apiservice.getTypes(this.centroid).subscribe(
       data => {
         this.tipos = data as any;
         console.log( 'API Respuesta:  ' + this.tipos.length + ' items.' );
@@ -51,12 +59,12 @@ export class CentroDetallePage {
         //   console.log(tipo.material);
         // }
 
-        this.tipos.forEach(function (tipo){
-          console.log(tipo.material);
-          this.todoslostipos=this.todoslostipos+tipo.material+', ';
-        });
-        console.log('Estos son todos los tipos');
-        console.log(this.todoslostipos);
+        // this.tipos.forEach(function (tipo){
+        //   console.log(tipo.material);
+        //   this.todoslostipos=this.todoslostipos+tipo.material+', ';
+        // });
+        // console.log('Estos son todos los tipos');
+        // console.log(this.todoslostipos);
       },
       error => {
         this.tipos = [ { 'usuario': 'Admin', 'Error': error['message'] } ]
