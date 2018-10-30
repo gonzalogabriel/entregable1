@@ -15,25 +15,66 @@ import { CMoReciclarPage } from '../c-mo-reciclar/c-mo-reciclar';
 import { ProgresoPage } from '../progreso/progreso';
 import { MAPACENTROACOPIOLUISCARLOSGALANPage } from '../m-apacentroacopioluiscarlosgalan/m-apacentroacopioluiscarlosgalan';
 import { MAPACENTROACOPI0QUIRIGUAPage } from '../m-apacentroacopi0quirigua/m-apacentroacopi0quirigua';
+import { CentroDetallePage } from '../centro-detalle/centro-detalle';
+
+// Importar servicio api
+import { ApiserviceProvider } from '../../providers/apiservice/apiservice';
+//import { normalizeLinks } from 'ionic-angular/umd/navigation/url-serializer';
+
 
 @Component({
   selector: 'page-centros-de-acopio',
   templateUrl: 'centros-de-acopio.html'
 })
 export class CentrosDeAcopioPage {
+  constructor(public navCtrl: NavController,
+    public apiservice: ApiserviceProvider) {
+    
+  }
 
-  constructor(public navCtrl: NavController) {
+  centers: any[]=[];
+ 
+
+  // Obtener Centros de Acopio
+  ionViewDidLoad(){
+    this.apiservice.getCenters().subscribe(
+      data => {
+        this.centers = data as any;
+          console.log( 'API Respuesta: ' + this.centers.length + ' items.' );
+        console.log(  this.centers);
+        console.log( 'Esta es la variable data:');
+        console.log( data);
+      },
+      error => {
+        this.centers = [ { 'usuario': 'Admin', 'Error': error['message'] } ]
+        console.log(error.message);
+      }
+    )
+  }
+
+/*   goToVerCentro(params){
+    if (!params) params = {};
+    this.navCtrl.push(VerCentroPage);
+  }
+ */
+goToCentroDetalle(params){
+    if (!params) params = {};
+    console.log("parametros:" + params);
+    this.navCtrl.push(CentroDetallePage,{centro:params});
   }
   goToMAPACENTROACOPIORINCON(params){
     if (!params) params = {};
     this.navCtrl.push(MAPACENTROACOPIORINCONPage);
-  }goToRECYCLEAN(params){
+  }
+  goToRECYCLEAN(params){
     if (!params) params = {};
     this.navCtrl.push(RECYCLEANPage);
-  }goToReciclar(params){
+  }
+  goToReciclar(params){
     if (!params) params = {};
     this.navCtrl.push(ReciclarPage);
-  }goToVidrio(params){
+  }
+  goToVidrio(params){
     if (!params) params = {};
     this.navCtrl.push(VidrioPage);
   }goToCENTROACOPIOLUISCARLOSGALAN(params){
@@ -73,4 +114,6 @@ export class CentrosDeAcopioPage {
     if (!params) params = {};
     this.navCtrl.push(MAPACENTROACOPI0QUIRIGUAPage);
   }
+
+
 }

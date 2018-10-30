@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        {{ centro.name_center | uppercase }}
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content class="cards-bg">
+
+  <ion-card class="adv-map">
+      <div style="position: relative">
+        <img src="assets/img/advance-card-map-paris.png">
+        <ion-fab right top>
+          <button ion-fab color="secondary">
+            <ion-icon name="pin"></ion-icon>
+          </button>
+        </ion-fab>
+      </div>
+      <ion-item>
+        <ion-icon color="secondary" large item-start name='information-circle'></ion-icon>
+        <h2>{{ centro.address_center}}</h2>
+        <p>{{ centro.phone_center}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon color="primary" large item-start name='phone-portrait'></ion-icon>
+        <h2>Plástico, Metal, Papel</h2>
+        <p>{{ centro.schedule}}</p>
+      </ion-item>
+      <ion-item actions>
+        <span ion-text item-start color="secondary" class="item-bold">26 min</span>
+        <span ion-text item-start color="subtle">(8.1 mi)</span>
+        <button ion-button color="secondary" clear item-end icon-start>
+          <ion-icon name='navigate'></ion-icon>
+          Start
+        </button>
+      </ion-item>
+    
+    </ion-card>
+            
+    <button id="mAPACENTROACOPIORINCON-button95" ion-button color="positive" block small on-click="goToCentrosDeAcopio()">
+      REGRESAR
+    </button>
+  </ion-content>

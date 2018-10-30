@@ -29,6 +29,11 @@ import { AplicacionCentroDeAcopioPage } from '../pages/aplicacion-centro-de-acop
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GoogleMaps } from "@ionic-native/google-maps";
+import { CentroDetallePage } from '../pages/centro-detalle/centro-detalle';
+
+// Import for service/provider
+import { HttpClientModule } from '@angular/common/http';
+import { ApiserviceProvider } from '../providers/apiservice/apiservice';
 
 
 
@@ -58,10 +63,12 @@ import { GoogleMaps } from "@ionic-native/google-maps";
     IniciarSesiNPage,
     VOUCHERPage,
     FELICITACIONESPORRECICLARPage,
-    AplicacionCentroDeAcopioPage
+    AplicacionCentroDeAcopioPage,
+    CentroDetallePage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -90,13 +97,16 @@ import { GoogleMaps } from "@ionic-native/google-maps";
     IniciarSesiNPage,
     VOUCHERPage,
     FELICITACIONESPORRECICLARPage,
-    AplicacionCentroDeAcopioPage
+    AplicacionCentroDeAcopioPage,
+    CentroDetallePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     GoogleMaps,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ApiserviceProvider,
+    ApiserviceProvider
   ]
 })
 export class AppModule {}

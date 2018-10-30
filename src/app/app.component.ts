@@ -23,6 +23,7 @@ import { OtrosPage } from '../pages/otros/otros';
 import { RegistroPage } from '../pages/registro/registro';
 import { HomePage } from '../pages/home/home';
 import { AplicacionCentroDeAcopioPage } from '../pages/aplicacion-centro-de-acopio/aplicacion-centro-de-acopio';
+import { CentroDetallePage } from '../pages/centro-detalle/centro-detalle';
 
 
 import { IniciarSesiNPage } from '../pages/iniciar-sesi-n/iniciar-sesi-n';
@@ -108,5 +109,9 @@ export class MyApp {
       if (!params) params = {};
       this.navCtrl.setRoot(HomePage);  
 
+  }
+  goToCentroDetalle(params){
+    if (!params) params = {};
+    this.navCtrl.push(CentroDetallePage);
   }
 }
